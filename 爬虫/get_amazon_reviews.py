@@ -13,7 +13,7 @@ def spider():
     for url in urls:
         driver.get(url)
         try:
-            while driver.find_element(By.CLASS_NAME, 'a-last').is_enabled():
+            while driver.find_element(By.CLASS_NAME, 'a-last').find_element(By.TAG_NAME, 'a'):
                 get_reviews(save_method)
                 driver.find_element(By.CSS_SELECTOR, "[class='a-last']").click()
                 time.sleep(3)
