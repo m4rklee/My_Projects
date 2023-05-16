@@ -20,6 +20,10 @@ pip install selenium
 ```
 pip install pymongo
 ```
+执行以下命令安装 xlwt 库（非必须，仅用于 excel 保存方式）
+```
+pip install xlwt
+```
 
 ## 使用方式
 - 安装 Python
