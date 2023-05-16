@@ -1,7 +1,9 @@
 # Python实现的一个简单爬虫程序
 ## 简介
 因为打算在毕业论文中对评论做情感分析，所以编写了这个简单的爬虫程序帮助收集评论
-
+- `driver_init.py` 对爬虫所用浏览器做初始化设置
+- `get_cookies.py` 获取网站的cookies并保存到本地
+- `get_amazon_reviews.py` 使用保存好的cookies登录网站，并进行评论爬取
 ## 安装 
 
 #### 本机运行环境（仅供参考）
@@ -16,8 +18,10 @@ pip install selenium
 ```
 
 ## 使用方式
-- 运行 get_cookies.py，登录自己的amazon账号，获取cookies，共爬虫程序登录
-- 运行 get_amazon_reviews.py，爬取评论
+- 安装 Python
+- 安装所需依赖
+- 运行 `get_cookies.py`，保存cookies
+- 运行 `get_amazon_reviews.py`，爬取评论
 - 对爬取的评论进行后续处理
 
 ## 参考
