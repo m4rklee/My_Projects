@@ -3,6 +3,9 @@ from selenium.webdriver.common.by import By
 import time
 import json
 
+# 使用 mongodb 数据库保存
+# import pymongo
+
 # 爬取评论
 # 目前只爬取评论中的文本部分，且不含评论的小标题
 def get_reviews(f):
@@ -12,8 +15,14 @@ def get_reviews(f):
         f.write('\t' + str(number) + '. ')
         f.write(r.text)
         f.write('\n')
-        number = number + 1
-
+    # 使用 mongodb 数据库保存
+    #   info = {
+    #       "num": number
+    #       "content": r.text()
+    #   }
+    #   reviews_collection.insert_one(info)
+    number = number + 1
+    
 # 待爬取网址
 # 目前仅测试了亚马逊中国站点
 main_page = 'https://www.amazon.cn/'
@@ -31,8 +40,14 @@ driver.delete_all_cookies()
 for c in cookies:
     driver.add_cookie(c)
 
-# 创建文件，保存评论
+# 创建文件保存评论
 f = open('reviews.txt', 'w', encoding='utf-8')
+
+# 创建 mongodb 数据库并初始化
+# client = pymongo.MongoClient()
+# db = client['REVIEWS']
+# reviews_collection = db.user
+# reviews_collection.drop()
 
 # 评论计数
 number = 1
@@ -50,3 +65,8 @@ for url in urls:
         get_reviews(f)
 print('finished')
 f.close()
+
+# 查看数据库中保存的内容
+# reviews = list(reviews_collection.find())
+# for review in reviews:
+#   print(review['content']
