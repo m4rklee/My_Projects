@@ -3,7 +3,7 @@
 因为打算在毕业论文中对评论做情感分析，所以编写了这个简单的爬虫程序帮助收集评论
 - `driver_init.py` 对爬虫所用浏览器做初始化设置
 - `get_cookies.py` 获取网站的cookies并保存到本地
-- `get_amazon_reviews.py` 使用保存好的cookies登录网站，并进行评论爬取
+- `get_amazon_reviews.py` 使用保存好的cookies登录网站，并进行评论爬取，可选择保存到文本文档、数据库和Excel三种方式
 ## 安装 
 
 #### 本机运行环境（仅供参考）
@@ -20,7 +20,7 @@ pip install selenium
 ```
 pip install pymongo
 ```
-执行以下命令安装 xlwt 库（非必须，仅用于 excel 保存方式）
+执行以下命令安装 xlwt 库（非必须，仅用于 Excel 保存方式）
 ```
 pip install xlwt
 ```
