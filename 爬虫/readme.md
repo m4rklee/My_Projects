@@ -25,4 +25,4 @@ pip install selenium
 
 ## 其他
 本项目目前处于初期阶段，后续会不断完善\
-欢迎提交issue
+欢迎提交issues
