@@ -12,9 +12,13 @@
 - selenium 4.9.1
 
 #### 安装依赖
-执行以下命令安装 python 依赖
+执行以下命令安装 selenium 库
 ```
 pip install selenium
+```
+执行以下命令安装 pymongo 库（非必须，仅用于数据库保存方式）
+```
+pip install pymongo
 ```
 
 ## 使用方式
