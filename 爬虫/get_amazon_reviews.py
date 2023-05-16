@@ -1,10 +1,10 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 from driver_init import driver
+from selenium.webdriver.common.by import By
 import time
 import json
 
-
+# 爬取评论
+# 目前只爬取评论中的文本部分，且不含评论的小标题
 def get_reviews(f):
     global number
     reviews = driver.find_elements(By.CLASS_NAME, 'review-text')
@@ -13,14 +13,12 @@ def get_reviews(f):
         f.write(r.text)
         f.write('\n')
         number = number + 1
-# 'https://www.amazon.de/-/en/Jin-Yong-ebook/product-reviews/B09KPVCRTJ/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews',
-# 'https://www.amazon.de/-/en/Jin-Yong/product-reviews/3453319907/ref=cm_cr_getr_d_paging_btm_prev_1?ie=UTF8&reviewerType=all_reviews',
-#  'https://www.amazon.de/-/en/Jin-Yong/product-reviews/3453319923/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews',
-
 
 # 待爬取网址
+# 目前仅测试了亚马逊中国站点
 main_page = 'https://www.amazon.cn/'
 urls = [
+        # 可以修改为其他商品的评论页面
         'https://www.amazon.cn/product-reviews/B07DJ3DS3V/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews'
         ]
 
@@ -35,6 +33,7 @@ for c in cookies:
 
 # 创建文件，保存评论
 f = open('reviews.txt', 'w', encoding='utf-8')
+
 # 评论计数
 number = 1
 
@@ -45,6 +44,7 @@ for url in urls:
         while driver.find_element(By.CLASS_NAME, 'a-last').is_enabled():
             get_reviews(f)
             driver.find_element(By.CSS_SELECTOR, "[class='a-last']").click()
+            # 延时可以根据网络状况修改
             time.sleep(3)
     except:
         get_reviews(f)
